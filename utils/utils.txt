@@ -1,0 +1,76 @@
+      <Button  style={{ width: '100%'}}  title='React Native' onPress={()=>navigation.navigate("TelaReactNative", {
+        aulas: 100, autor: "Charles"
+      })} />
+      <Button    title='Canal' onPress={()=>navigation.navigate('Canal') }/>
+
+       <Button title='Home' onPress={()=>navigation.navigate("Home")} />
+      <Button title='Cursos' onPress={()=>navigation.navigate("Cursos")} />
+      <Button title='Voltar' onPress={()=>navigation.goBack()} />
+
+          <Button 
+      title='Acessar'
+    />
+    
+    
+    <Button     
+      title='Voltar'
+      onPress={()=>navigation.goBack() }
+    />
+
+        <NavigationContainer>
+      <Pilha.Navigator initialRouteName="TelaCanal">
+
+
+        <Guias.Screen
+     name="Home" 
+     component={TelaHome} 
+     options={{ Title: "Home", 
+     headerStyle: {
+       backgroundColor: '#f00',
+     },
+     headerTintColor: '#fff',
+     fontWeight: 'bold',
+     headerRight: ()=>(
+       <Button
+         title="Cursos"
+         color="#000"
+         onPress={()=>alert('Clicado')}
+       />
+     ),
+    }
+   } 
+        />
+
+        <Pilha.Screen
+          name="Canal"
+          component={TelaCanal}
+          options={{ Title: "Canal",
+          headerStyle: {
+            backgroundColor: '#f00',
+          },
+          headerTintColor: '#fff',
+         }}
+        />
+
+        <Pilha.Screen
+          name="Cursos"
+          component={TelaCursos}
+          options={{ title: "Cursos",
+          headerStyle: {
+            backgroundColor: '#f00',
+          },
+          headerTintColor: '#fff', }}
+
+        />
+        <Pilha.Screen
+          name="TelaReactNative"
+          component={TelaReactNative}
+          options={{ title: "Curso RN", 
+          headerStyle: {
+            backgroundColor: '#f00',
+          },
+          headerTintColor: '#fff', }}
+
+        />
+      </Pilha.Navigator>
+    </NavigationContainer>

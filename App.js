@@ -7,12 +7,15 @@ import Styles from './styles/styles';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { createDrawerNavigator } from '@react-navigation/drawer';
+
 
 import TelaCursos from './components/TelaCursos';
 
 const imgF = './assets/2165563.png';
 const Pilha = createStackNavigator();
 const Guias = createBottomTabNavigator();
+const Gavetas = createDrawerNavigator();
 
 function TelaHome({navigation})
 {
@@ -22,7 +25,7 @@ function TelaHome({navigation})
         Home
       </Text>
 
-      //*<Button title='Canal' onPress={()=>navigation.navigate('Canal') }/>
+      <Button    title='Canal' onPress={()=>navigation.navigate('Canal') }/>
     </View>
   );
 }
@@ -42,38 +45,6 @@ function TelaCanal({navigation})
 }
 
 
-
-function TelaReactNative({route, navigation})
-{
- 
- const {aulas}=route.params;
- const {autor} = route.params;
-  return (
-
-    <View style={{ flex:1, alignItems: 'center', justifyContent: 'center' }}>
-    <Text style={{ fontSize: 30, color: '#000', marginBottom: 30 }}>Cursos</Text>
-   
-    <Text  style={{ color: '#000'}}>Autor: {autor}</Text>
-    <Text style={{ color: '#000'}}>Aulas: {aulas}</Text>
-
-    <Button 
-      title='Acessar'
-    />
-    
-    
-    <Button     
-      title='Voltar'
-      onPress={()=>navigation.goBack() }
-    />
-
-  </View>
-
-
-
-
-
-  );
-}
 
 
 
@@ -110,10 +81,10 @@ export default function App1() { //Function component
   return (
 
     <NavigationContainer>
-      <Pilha.Navigator initialRouteName="TelaCanal">
+      <Gavetas.Navigator initialRouteName="TelaCanal">
 
 
-        <Guias.Screen
+        <Gavetas.Screen
      name="Home" 
      component={TelaHome} 
      options={{ Title: "Home", 
@@ -133,7 +104,7 @@ export default function App1() { //Function component
    } 
         />
 
-        <Pilha.Screen
+        <Gavetas.Screen
           name="Canal"
           component={TelaCanal}
           options={{ Title: "Canal",
@@ -144,7 +115,7 @@ export default function App1() { //Function component
          }}
         />
 
-        <Pilha.Screen
+        <Gavetas.Screen
           name="Cursos"
           component={TelaCursos}
           options={{ title: "Cursos",
@@ -154,17 +125,7 @@ export default function App1() { //Function component
           headerTintColor: '#fff', }}
 
         />
-        <Pilha.Screen
-          name="TelaReactNative"
-          component={TelaReactNative}
-          options={{ title: "Curso RN", 
-          headerStyle: {
-            backgroundColor: '#f00',
-          },
-          headerTintColor: '#fff', }}
-
-        />
-      </Pilha.Navigator>
+      </Gavetas.Navigator>
     </NavigationContainer>
 
 
